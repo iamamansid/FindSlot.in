@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="./favicon/site.webmanifest">
+    <title>Covid-19 Vaccination slot finder for 18 years and above in India</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css?cb=1000000000006">
+    <link rel="stylesheet" href="css/datatable.min.css?cb=1000000000006">
+    <link rel="stylesheet" href="css/style.css?cb=1000000000006">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-success"><small>Find Covid-19 vaccine slot on CoWin portal.</small></h1>
+        <br>
+        <div class="filter-actions">
+            <div class="row form-group">
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="city_id">City <span class="city_status small"></span></label>
+                    <select name="quick_city_search" id="city_id" class="form-control">
+                        <option value='delhi'>Select City</option>
+                        <option value='delhi'>Delhi NCR</option>
+                        <option value='bangalore'>Bangalore</option>
+                        <option value='chennai'>Chennai</option>
+                        <option value='hyderabad'>Hyderabad</option>
+                        <option value='kolkata'>Kolkata</option>
+                        <option value='mumbai'>Mumbai</option>
+                        <option value='pune'>Pune</option>
+                        <option value='lucknow'>Lucknow</option>
+                        <option value='jaipur'>Jaipur</option>
+                        <option value='bhopal'>Bhopal</option>
+                        <option value='haridwar'>Haridwar</option>
+                        <option value='nagpur'>Nagpur</option>
+                        <option value='ahmedabad'>Ahmedabad</option>
+                        <option value='patna'>Patna</option>
+                        <option value='coimbatore'>Coimbatore</option>
+                        <option value='chandigarh'>Chandigarh</option>
+                        <option value='gurgaon'>Gurgaon</option>
+                        <option value='ghaziabad'>Ghaziabad</option>
+                        <option value='noida'>Noida</option>
+                        <option value='meerut'>Meerut</option>
+                        <option value='moradabad'>Moradabad</option>
+                        <option value='jammu'>Jammu</option>
+                        <option value='shimla'>Shimla</option>
+                        <option value='mysuru'>Mysuru</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="city_age_group">Age Group <span class="age_status text-success small"></span></label>
+                    <select name="age" id="city_age_group" class="form-control">
+                        <option value="below_45">18 - 45 Only</option>
+                        <option value="above_45">All age group</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                OR ENTER YOUR PIN CODE
+            </div>
+        </div>
+        <br>
+        <div class="filter-actions">
+            <div class="row form-group">
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="pincode">Pincode <span class="pincode_status small"></span></label>
+                    <input type="text" name="pincode" id="pincode" class="form-control">
+                </div>
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="pincode_age_group">Age Group <span class="age_status text-success small"></span></label>
+                    <select name="age" id="pincode_age_group" class="form-control">
+                        <option value="below_45">18 - 45 Only</option>
+                        <option value="above_45">All age group</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-12 form-group">
+                    <button type="button" class="btn btn-primary" id="filter-by-pincode" style="margin-top: 24px;">
+                        <span class="glyphicon glyphicon-filter"></span> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                OR SELECT
+            </div>
+        </div>
+        <br>
+        <div class="filter-actions">
+            <div class="row form-group">
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="state_id">States <span class="state_status small"></span></label>
+                    <select name="state_id" id="state_id" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="district_id">Districts <span class="district_status text-success small"></span></label>
+                    <select name="district_id" id="district_id" class="form-control">
+                    </select>
+                </div>
+                <div class="col-md-3 col-sm-12 form-group">
+                    <label for="age">Age Group <span class="age_status text-success small"></span></label>
+                    <select name="age" id="age" class="form-control">
+                        <option value="below_45">18 - 45 Only</option>
+                        <option value="above_45">All age group</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-success" id="search-result-locations">Search Results <small class="search-result-locations"></small></h2>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <div class="center-loading text-center"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table id="vaccine_details" class="table table-striped table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Center Name</th>
+                                <th>Area</th>
+                                <th>Pincode</th>
+                                <th>Earliest Date</th>
+                                <th>Available Slots</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <th colspan="6" class="text-center">Please select your state, district & age group.</th>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center footer-wrapper">
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Disclaimer:</strong> This web app uses CoWin open API to make it easy for you to find slots. Availability changes in real time. So book your slot ASAP using <a href="https://selfregistration.cowin.gov.in">https://selfregistration.cowin.gov.in</a>.<br
+                    />
+                    <br>For any support <a href="https://twitter.com/shubhendusharma">@shubhendusharma</a> or <a href="https://twitter.com/jeroznishanth">@jeroznishanth</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <script src="./js/jquery.min.js?cb=1000000000006"></script>
+    <script src="./js/bootstrap.min.js?cb=1000000000006"></script>
+    <script src="./js/jquery.datatable.min.js?cb=1000000000006"></script>
+    <script src="./js/jquery.bootstrap.min.js?cb=1000000000006"></script>
+
+    <script src="js/script.js?cb=1000000000006"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGDP6SSG97"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-FGDP6SSG97');
+    </script>
+</body>
+
+</html>
